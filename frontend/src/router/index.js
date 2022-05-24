@@ -1,15 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import IndexPage from '@/components/IndexPage'
+import Main from "../views/management/main.vue"
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'IndexPage',
-      component: IndexPage
+  mode : "history",
+  routes: [{
+      path: "/",
+      redirect: "/main"
     },
+    {
+      path: "/main",
+      component: Main,
+    }
+
   ]
 })
