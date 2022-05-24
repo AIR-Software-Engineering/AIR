@@ -26,29 +26,76 @@
                                 </div>
                             </div>
                             <div class="child1">
-                                <button style="float:right; margin-right:20%;">시간표 추천 열기</button>
+                                <button style="float:right; margin-right:20%;" @click="togglechange">시간표 추천 열기</button>
                             </div>
                         </div>
-                        <div style="width:70%;" v-for="(row,index) in rows" :key="row.id">
-                            <div style="float:left; width:40%;margin-right:10%;margin-bottom:40px;">
-                                <div class="lecturebox">
-                                    <div class="lechild1">
-                                        <div style="margin:7%;">
-                                            <span>{{ row.name }}</span>
+                        <div v-show="this.toggle != false">
+                            <div style="width:70%;" v-for="(row,index) in rows" :key="row.id">
+                                <div style="float:left; width:40%;margin-right:10%;margin-bottom:40px;">
+                                    <div class="lecturebox">
+                                        <div class="lechild1">
+                                            <div style="margin:7%;">
+                                                <span>{{ row.name }}</span>
+                                            </div>
+                                            <div>
+                                                <span>{{ row.recommand }}</span>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <span>{{ row.recommand }}</span>
+                                        <div class="lechild2">
+                                            <div style="margin-top:10%;">
+                                                <span>{{ row.image }}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="lechild2">
-                                        <div style="margin-top:10%;">
-                                            <span>{{ row.image }}</span>
+
+                                </div>
+                            </div> 
+                        </div>
+                        <div v-show="this.toggle != true">
+                            <div class="parent" style="width:70%;">
+                                <div class="child1">
+                                    <div v-for="(row,key,index) in rows" :key="index">
+                                        <div class="parent" style="float:left; width:80%;margin-right:10%;margin-bottom:40px;">
+                                            <div class="child3">
+                                                <div class="lecturebox">
+                                                    <div class="lechild1">
+                                                        <div style="margin:7%;">
+                                                            <span>{{ row.name }}</span>
+                                                        </div>
+                                                        <div>
+                                                            <span>{{ row.recommand }}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lechild2">
+                                                        <div style="margin-top:10%;">
+                                                            <span>{{ row.image }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="child1" style="margin-top:9%;margin-left:5%;">
+                                                <input type="checkbox" :id="key" v-model="checked[key]">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="child1">
+                                    <div class="parent" style="width:70%; margin-bottom:10%;">
+                                        <div class="child1">
+                                            <button>previous</button>
+                                        </div>
+                                        <div class="child5">
+                                            <span>추천 시간표</span>
+                                        </div>
+                                        <div class="child1">
+                                            <button>next</button>
+                                        </div>
+                                    </div>
+                                    <div style="width:70%;" class="test">
+                                    </div>
+                                </div>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </center>
             </div>
@@ -63,6 +110,9 @@ export default {
   data(){
       return{
             selected: "",
+            checked:[
+
+            ],
             rows:[
                 {name : "CSE0000",
                 recommand: 5,
@@ -90,11 +140,17 @@ export default {
                 image: "이미지를 넣어주세요"}
                 
             ],
+            toggle:false,
       }
       
   }, 
   components : {
     LeftSideBar,
+  },
+  methods: {
+      togglechange: function(){
+          this.toggle = !this.toggle;
+      }
   }
 }
 </script>
@@ -115,6 +171,9 @@ export default {
 .child4 {
     flex:2;
 }
+.child5 {
+    flex:3;
+}
 .word {
     font-size: 30px;
 }
@@ -130,5 +189,10 @@ export default {
 .lechild2 {
     background-color: rgb(176, 173, 173);
     flex: 6;
+}
+.test {
+    background-color: rgb(176, 173, 173);
+    border:solid 1px;
+    height: 47vh;
 }
 </style>
