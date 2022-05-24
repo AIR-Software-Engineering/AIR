@@ -9,12 +9,12 @@
           강의
         </div>
       </router-link>
-      <router-link to="/lecture">
+      <router-link to="/systemChart">
         <div class="selections">
           이수체계도
         </div>
       </router-link>
-      <router-link to="/lecture">
+      <router-link to="/academicData">
         <div class="selections">
           학술자료
         </div>
@@ -63,7 +63,7 @@ div.left {
    height:1000px;
    background:rgba(255,98,124,0.6);
    padding:40px 0;
-   overflow: hidden
+   overflow: hidden;
 }
 .fade1s {
   animation: fade-in 1.5s ease-in-out;
