@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var path = require('path'); // 모듈 추가
+const express = require('express');
+const router = express.Router();
+const path = require('path'); // 모듈 추가
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
