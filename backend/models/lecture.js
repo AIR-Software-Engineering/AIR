@@ -38,7 +38,8 @@ const lectureSchema = new Schema({
     type: String,
   }],
 }, {
-  timestamps: false
+  timestamps: false,
+  _id: false
 })
 
 const Lectures = mongoose.model('Lectures', lectureSchema)

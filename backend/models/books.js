@@ -30,7 +30,8 @@ const bookSchema = new Schema({
     type: String,
   }],
 }, {
-  timestamps: false
+  timestamps: false,
+  _id: false
 })
 
 const Books = mongoose.model('Books', bookSchema)

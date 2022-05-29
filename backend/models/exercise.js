@@ -20,7 +20,8 @@ const exerciseSchema = new Schema({
   }]
 
 }, {
-  timestamps: false
+  timestamps: false,
+  _id: false
 })
 
 const Exercises = mongoose.model('Exercises', exerciseSchema)

@@ -1,39 +1,36 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const paperSchema = new Schema({
-  title: {
+const ratingTBSchema = new Schema({
+  student_id : {
     type: String,
     required: true
   },
-  year: {
+  course_id : {
     type: String,
     required: true,
   },
-  language: {
+  grade: {
     type: String,
     required: true,
   },
-  author: {
-    type: String,
-    required: true,
-  },
-  journal: {
-    type: String,
-    required: true,
-  },
-  link: {
+  major: {
     type: String,
     required: true,
   },
   keywords: [{
     type: String,
+    required: true,
   }],
+  rating: {
+    type: String,
+    required: true,
+  }
 }, {
   timestamps: false,
   _id: false
 })
 
-const Papers = mongoose.model('Papers', paperSchema)
+const Rating = mongoose.model('Rating', ratingTBSchema)
 
-module.exports = Papers
+module.exports = Rating

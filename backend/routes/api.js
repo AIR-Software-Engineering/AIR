@@ -17,5 +17,6 @@ router.get('/RCPaper', ApiController.getRecommendPaperList);
 
 router.post('/postUserKeywords', ApiController.postUserKeywords);
 router.post('/deleteUserKeywords', ApiController.deleteUserKeywords);
+router.post('/postRate', ApiController.postRate);
 
 module.exports = router;

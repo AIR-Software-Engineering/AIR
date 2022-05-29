@@ -4,15 +4,13 @@ const papers = require('../models/paper');
 const lecture = require('../models/lecture');
 const exercise = require('../models/exercise');
 const books = require('../models/books');
+const rating = require('../models/ratingTB');
 const cwr = require('../utils/createWebResponse');
 const fs = require("fs");
 const path = require("path");
 
 
-const exportToModel = () => {
-  fs.writeFileSync(path.join(__dirname, ''))
 
-}
 
 const getUserInfo = async (req, res) => {
   try {
@@ -144,6 +142,27 @@ const deleteUserKeywords = async (req, res) => {
   }
 
 }
+
+const postRate = async (req, res) => {
+  try {
+    const userData = Users.findOne({'student_id': req.body.student_id})
+    rating.updateOne({'student_id': req.body.student_id, 'course_id': req.body.course_id},
+      {'student_id': req.query.student_id,
+        'course_id': req.body.course_id,
+        'grade': userData.grade,
+        'major': userData.major,
+        'keywords': userData.keywords,
+        'rating': req.body.rating
+      })
+    return cwr.createWebResp(res, header, 200,
+      'postRate Success!');
+
+  } catch (e) {
+    return cwr.errorWebResp(res, header, 500,
+      'postRate failed', e.message || e);
+  }
+
+}
 module.exports = {
   getUserInfo,
   getLectureInfo,
@@ -155,5 +174,6 @@ module.exports = {
   getRecommendPaperList,
   getRecommendExerciseList,
   postUserKeywords,
-  deleteUserKeywords
+  deleteUserKeywords,
+  postRate
 }

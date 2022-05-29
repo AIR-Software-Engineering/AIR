@@ -19,6 +19,10 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  student_id: {
+    type: Number,
+    required: true
+  },
   grade: {
     type: Number,
     required: true,
@@ -35,7 +39,8 @@ const userSchema = new Schema({
     type: String,
   }],
 }, {
-  timestamps: false
+  timestamps: false,
+  _id: false
 })
 
 

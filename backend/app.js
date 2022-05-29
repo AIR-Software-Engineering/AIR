@@ -11,6 +11,8 @@ const loginRouter = require('./routes/login');
 const apiRouter = require('./routes/api');
 const app = express();
 const mongoose = require('mongoose');
+const fs = require("fs");
+const Users = require("./models/user");
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
