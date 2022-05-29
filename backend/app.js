@@ -8,6 +8,7 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
+const apiRouter = require('./routes/api');
 const app = express();
 const mongoose = require('mongoose');
 // view engine setup
@@ -27,9 +28,8 @@ connect.then(() => {
   console.log("Connected correctly to server!");
 }, (err) => { console.log(err) });
 
-app.use('/', indexRouter);
 // app.use('/users', usersRouter);
-app.use('/api/login', loginRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

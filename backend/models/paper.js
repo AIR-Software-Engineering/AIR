@@ -14,10 +14,6 @@ const paperSchema = new Schema({
     type: String,
     required: true,
   },
-  keywords: {
-    type: Number,
-    required: true,
-  },
   author: {
     type: String,
     required: true,
@@ -37,6 +33,6 @@ const paperSchema = new Schema({
   timestamps: false
 })
 
-const Papers = mongoose.model('Users', paperSchema)
+const Papers = mongoose.model('Papers', paperSchema)
 
 module.exports = Papers

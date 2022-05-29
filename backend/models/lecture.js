@@ -15,11 +15,11 @@ const lectureSchema = new Schema({
     required: true,
   },
   classNumber: {
-    type: String,
+    type: Number,
     required: true,
   },
   classCode: {
-    type: Number,
+    type: String,
     required: true,
   },
   courseClassification: {
@@ -30,7 +30,7 @@ const lectureSchema = new Schema({
     type: String,
     required: true,
   },
-  lectuerSchedule: {
+  lectureSchedule: {
     type: String,
     required: true,
   },
