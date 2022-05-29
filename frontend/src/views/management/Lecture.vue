@@ -35,6 +35,7 @@
                                     <div class="lechild1">
                                         <div style="margin:7%;">
                                             <span>{{ row.name }}</span>
+                                        <div class="lechild1">
                                         </div>
                                         <div>
                                             <span>{{ row.recommand }}</span>

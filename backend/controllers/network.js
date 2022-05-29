@@ -5,8 +5,8 @@ const cwr = require('../utils/createWebResponse');
 const fs = require("fs");
 
 const getDocuments = async function (db, callback) {
-  const UserData = await Users.find({'ID': 'ID'});
-  callback(UserData);
+  const Data = await rating.find();
+  callback(Data);
 };
 
 
@@ -20,7 +20,7 @@ const makeRatingTB = async (req, res) => {
         console.log('Error writing to file', err)
       }
     }).then();
-    return cwr.createWebResp(res, header, 200, UserData);
+    return cwr.createWebResp(res, header, 200, 'getDocuments success!');
 
   } catch (e) {
     return cwr.errorWebResp(res, header, 500,
