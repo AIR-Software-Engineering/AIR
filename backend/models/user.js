@@ -38,6 +38,10 @@ const userSchema = new Schema({
   keywords: [{
     type: String,
   }],
+  takenLecture: [{
+    type: String
+  }]
+
 }, {
   timestamps: false,
   _id: false

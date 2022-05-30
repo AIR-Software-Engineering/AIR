@@ -35,7 +35,6 @@
                                     <div class="lechild1">
                                         <div style="margin:7%;">
                                             <span>{{ row.name }}</span>
-                                        <div class="lechild1">
                                         </div>
                                         <div>
                                             <span>{{ row.recommand }}</span>
@@ -49,7 +48,7 @@
                                 </div>
 
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </center>
             </div>
@@ -89,11 +88,11 @@ export default {
                 {name : "CSE0007",
                 recommand: 5,
                 image: "이미지를 넣어주세요"}
-                
+
             ],
       }
-      
-  }, 
+
+  },
   components : {
     LeftSideBar,
   }

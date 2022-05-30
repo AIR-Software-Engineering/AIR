@@ -80,6 +80,34 @@ const getRecommendLectureList = async (req, res) => {
   }
 }
 
+const searchPapers = async (req, res) => {
+  try {
+    const keyword = req.query.keyword;
+    const paperData = await papers.find({"title": {$regex: keyword}}).limit(req.query.count);
+
+    return cwr.createWebResp(res, header, 200, paperData);
+
+  } catch (e) {
+    return cwr.errorWebResp(res, header, 500,
+      'searchPapers failed', e.message || e);
+  }
+}
+
+const searchBooks = async (req, res) => {
+  try {
+    const keyword = req.query.keyword;
+    const bookData = await papers.find({"title": {$regex: keyword}}).limit(req.query.count);
+
+    return cwr.createWebResp(res, header, 200, bookData);
+
+  } catch (e) {
+    return cwr.errorWebResp(res, header, 500,
+      'searchBooks failed', e.message || e);
+  }
+}
+
+
+
 // 정렬 추가해야 함
 const getRecommendBookList = async (req, res) => {
   try {
@@ -147,22 +175,24 @@ const postRate = async (req, res) => {
   try {
     const userData = Users.findOne({'student_id': req.body.student_id})
     rating.updateOne({'student_id': req.body.student_id, 'course_id': req.body.course_id},
-      {'student_id': req.query.student_id,
+      {
+        'student_id': req.query.student_id,
         'course_id': req.body.course_id,
         'grade': userData.grade,
         'major': userData.major,
         'keywords': userData.keywords,
         'rating': req.body.rating
-      })
+      },
+      {upsert: true}).catch(err=> {console.log(err)});
     return cwr.createWebResp(res, header, 200,
       'postRate Success!');
-
   } catch (e) {
     return cwr.errorWebResp(res, header, 500,
       'postRate failed', e.message || e);
   }
-
 }
+
+
 module.exports = {
   getUserInfo,
   getLectureInfo,
@@ -175,5 +205,7 @@ module.exports = {
   getRecommendExerciseList,
   postUserKeywords,
   deleteUserKeywords,
-  postRate
+  postRate,
+  searchPapers,
+  searchBooks
 }
