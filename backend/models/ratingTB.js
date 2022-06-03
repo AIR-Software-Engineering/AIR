@@ -3,15 +3,15 @@ const Schema = mongoose.Schema
 
 const ratingTBSchema = new Schema({
   student_id : {
-    type: String,
+    type: Number,
     required: true
   },
   course_id : {
-    type: String,
+    type: Number,
     required: true,
   },
-  grade: {
-    type: String,
+  credit: { //몇학점인지
+    type: Number,
     required: true,
   },
   major: {
