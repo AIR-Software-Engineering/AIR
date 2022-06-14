@@ -5,6 +5,7 @@ const lecture = require('../models/lecture');
 const exercise = require('../models/exercise');
 const books = require('../models/books');
 const rating = require('../models/ratingTB');
+const rating2 = require('../models/ratingTB2');
 const cwr = require('../utils/createWebResponse');
 const fs = require("fs");
 const path = require("path");
@@ -25,7 +26,7 @@ const getUserInfo = async (req, res) => {
 
 const getLectureInfo = async (req, res) => {
   try {
-    const lectureData = await lecture.find({'classCode': req.query.classCode})
+    const lectureData = await lecture.find({'courseId': req.query.classCode})
     return cwr.createWebResp(res, header, 200, lectureData);
 
   } catch (e) {
@@ -70,8 +71,7 @@ const getPaperInfo = async (req, res) => {
 // 정렬 추가해야 함
 const getRecommendLectureList = async (req, res) => {
   try {
-    const str = req.query.sort;
-    const lectureData = await lecture.find().limit(req.query.count);
+    const lectureData = await rating.find({'student_id': req.query.student_id}).sort({ratings: -1}).limit(req.query.count);
     return cwr.createWebResp(res, header, 200, lectureData);
 
   } catch (e) {
@@ -174,7 +174,7 @@ const deleteUserKeywords = async (req, res) => {
 const postRate = async (req, res) => {
   try {
     const userData = Users.findOne({'student_id': req.body.student_id})
-    rating.updateOne({'student_id': req.body.student_id, 'course_id': req.body.course_id},
+    rating2.updateOne({'student_id': req.body.student_id, 'course_id': req.body.course_id},
       {
         'student_id': req.query.student_id,
         'course_id': req.body.course_id,
