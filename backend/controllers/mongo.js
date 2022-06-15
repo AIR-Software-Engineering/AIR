@@ -12,7 +12,7 @@ const path = require("path");
 
 
 
-
+// 사용자 정보 반환
 const getUserInfo = async (req, res) => {
   try {
     const UserData = await Users.find({'ID': req.query.ID});
@@ -24,6 +24,7 @@ const getUserInfo = async (req, res) => {
   }
 }
 
+// 강의 정보 반환
 const getLectureInfo = async (req, res) => {
   try {
     const lectureData = await lecture.find({'courseId': req.query.classCode})
@@ -35,6 +36,7 @@ const getLectureInfo = async (req, res) => {
   }
 }
 
+// 서적 정보 반환
 const getBookInfo = async (req, res) => {
   try {
     const bookData = await books.find({'ISBN': req.query.ISBN})
@@ -45,6 +47,7 @@ const getBookInfo = async (req, res) => {
   }
 }
 
+// 전공 서적별 연습문제 반환
 const getExerciseInfo = async (req, res) => {
   try {
     const exerciseData = await exercise.find({'ISBN': req.query.ISBN, 'chapter': req.query.chapter});
@@ -56,6 +59,7 @@ const getExerciseInfo = async (req, res) => {
   }
 }
 
+// 논문 정보 반환
 const getPaperInfo = async (req, res) => {
   try {
 
@@ -68,7 +72,7 @@ const getPaperInfo = async (req, res) => {
   }
 }
 
-// 정렬 추가해야 함
+// 사용자 별 강의 추천 리스트 반환
 const getRecommendLectureList = async (req, res) => {
   try {
     const lectureData = await rating.find({'student_id': req.query.student_id}).sort({ratings: -1}).limit(req.query.count);
@@ -80,6 +84,7 @@ const getRecommendLectureList = async (req, res) => {
   }
 }
 
+// 논문 이름을 기준으로 검색
 const searchPapers = async (req, res) => {
   try {
     const keyword = req.query.keyword;
@@ -93,6 +98,7 @@ const searchPapers = async (req, res) => {
   }
 }
 
+// 서적 이름을 기준으로 검색
 const searchBooks = async (req, res) => {
   try {
     const keyword = req.query.keyword;
@@ -108,7 +114,7 @@ const searchBooks = async (req, res) => {
 
 
 
-// 정렬 추가해야 함
+// 사용자별 전공 서적 추천 리스트 반환
 const getRecommendBookList = async (req, res) => {
   try {
     const str = req.query.sort;
@@ -121,6 +127,7 @@ const getRecommendBookList = async (req, res) => {
   }
 }
 
+// 사용자별 논문 추천 리스트 반환
 const getRecommendPaperList = async (req, res) => {
   try {
     const str = req.query.sort;
@@ -133,6 +140,7 @@ const getRecommendPaperList = async (req, res) => {
   }
 }
 
+// 사용자별 전공 서적 연습문제 추천 리스트 반환
 const getRecommendExerciseList = async (req, res) => {
   try {
     const str = req.query.sort;
@@ -145,6 +153,7 @@ const getRecommendExerciseList = async (req, res) => {
   }
 }
 
+// 사용자별 키워드 추가/수정
 const postUserKeywords = async (req, res) => {
   try {
     Users.updateOne({'ID': req.body.ID},
@@ -158,6 +167,7 @@ const postUserKeywords = async (req, res) => {
   }
 }
 
+// 사용자별 키워드 삭제
 const deleteUserKeywords = async (req, res) => {
   try {
     Users.updateOne({'ID': req.body.ID},
@@ -171,6 +181,7 @@ const deleteUserKeywords = async (req, res) => {
 
 }
 
+// 사용자별 강의 평가 등록 (5점 만점 기준)
 const postRate = async (req, res) => {
   try {
     const userData = Users.findOne({'student_id': req.body.student_id})
