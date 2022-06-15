@@ -11,6 +11,7 @@ router.get('/book', ApiController.getBookInfo);
 router.get('/exercise', ApiController.getExerciseInfo);
 router.get('/paper', ApiController.getPaperInfo);
 router.get('/RCLecture', ApiController.getRecommendLectureList);
+router.get('/RCLecture_semester', ApiController.getRecommendLectureList_semester);
 router.get('/RCBook', ApiController.getRecommendBookList);
 router.get('/RCExercise', ApiController.getRecommendExerciseList);
 router.get('/RCPaper', ApiController.getRecommendPaperList);

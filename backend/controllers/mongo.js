@@ -73,16 +73,80 @@ const getPaperInfo = async (req, res) => {
 }
 
 // 사용자 별 강의 추천 리스트 반환
-const getRecommendLectureList = async (req, res) => {
+const getRecommendLectureList_semester = async (req, res) => {
   try {
-    const lectureData = await rating.find({'student_id': req.query.student_id}).sort({ratings: -1}).limit(req.query.count);
-    return cwr.createWebResp(res, header, 200, lectureData);
+    const data = await rating.aggregate([
+      {
+        $lookup: {
+          from: "lectures",
+          localField: "course_id",
+          foreignField: "courseId",
+          as: "course",
+        },
+      },
+      { $unwind: "$course" },
+      {
+        $project: {
+          course_id: 1,
+          courseName: "$course.courseName",
+          semester: "$course.semester",
+          credit: "$course.credit",
+          grade: 1,
+          major: 1,
+          keywords: 1,
+          ratings: 1
+
+        }
+      },
+      {$sort: {semester: -1, ratings: -1}},
+    ])
+    return cwr.createWebResp(res, header, 200, data);
 
   } catch (e) {
     return cwr.errorWebResp(res, header, 500,
       'getRecommendPaperList error', e.message || e);
   }
 }
+
+// 이수체계도 추천 시스템
+const getRecommendLectureList = async (req, res) => {
+  try {
+    const data = await rating.aggregate([
+      {
+        $lookup: {
+          from: "lectures",
+          localField: "course_id",
+          foreignField: "courseId",
+          as: "course",
+        },
+      },
+      { $unwind: "$course" },
+      {
+        $project: {
+          course_id: 1,
+          courseName: "$course.courseName",
+          semester: "$course.semester",
+          credit: "$course.credit",
+          grade: 1,
+          major: 1,
+          keywords: 1,
+          ratings: 1
+
+        }
+      },
+      {$sort: {ratings: -1}},
+      { $limit : Number(req.query.count) }
+    ])
+
+
+    return cwr.createWebResp(res, header, 200, data);
+
+  } catch (e) {
+    return cwr.errorWebResp(res, header, 500,
+      'getRecommendPaperList error', e.message || e);
+  }
+}
+
 
 // 논문 이름을 기준으로 검색
 const searchPapers = async (req, res) => {
@@ -181,7 +245,7 @@ const deleteUserKeywords = async (req, res) => {
 
 }
 
-// 사용자별 강의 평가 등록 (5점 만점 기준)
+// 사용자별 강의 평점 등록
 const postRate = async (req, res) => {
   try {
     const userData = Users.findOne({'student_id': req.body.student_id})
@@ -211,6 +275,7 @@ module.exports = {
   getExerciseInfo,
   getPaperInfo,
   getRecommendLectureList,
+  getRecommendLectureList_semester,
   getRecommendBookList,
   getRecommendPaperList,
   getRecommendExerciseList,
