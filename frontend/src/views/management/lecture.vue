@@ -147,11 +147,20 @@ export default {
   components : {
     LeftSideBar,
   },
+  mounted() {
+      this.$axios.get('/api/RCLecture?str=name&count=10')
+      .then((response) => {
+        console.log(response.data); // 비동기 통신이 성공했을 경우, .then()은 콜백을 인자로 받아 결과값을 처리함
+      })
+      .catch((error) => {
+        console.log(error); // catch()를 통해 오류를 처리함
+      });
+  },
   methods: {
       togglechange: function(){
           this.toggle = !this.toggle;
-      }
-  }
+      },
+  },
 }
 </script>
 
