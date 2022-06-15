@@ -8,24 +8,24 @@
       이수체계도
       <div class="" style="width:1000px; height:400px; margin-top:50px;">
         <div class="left_view">
-
+          <img src="../../assets/recommand.png" style="width:100%; height:100%">
         </div>
         <div class="right_data">
           이수체계도 세부사항
           <div style="margin-top:50px; margin-left:20px; text-align:left; font-size:20px">
             <p>추천 키워드</p>
             <ul>
-              <li>키워드1</li>
-              <li>키워드2</li>
-              <li>키워드3</li>
+              <li>보안</li>
+              <li>네트워크</li>
+              <li>시스템</li>
             </ul>
           </div>
           <div style="margin-top:50px; margin-left:20px; text-align:left; font-size:20px">
             <p>관련 진로</p>
             <ul>
-              <li>진로1</li>
-              <li>진로2</li>
-              <li>진로3</li>
+              <li>정보보안컨설턴트</li>
+              <li>네트워크관리전문가</li>
+              <li>보안어플리케이션개발</li>
             </ul>
           </div>
         </div>
@@ -101,10 +101,10 @@ export default {
   text-align: left;
 }
 .left_view {
-  width:75%;
-  height:400px;
-  background-color: lightgrey;
+  width:70%;
+  height:100%;
   float: left;
+  border: 1px solid;
 }
 .right_data {
   width:25%;
