@@ -77,16 +77,20 @@ const getRecommendLectureList_semester = async (req, res) => {
   try {
     const data = await rating.aggregate([
       {
+        $match: {student_id: Number(req.query.student_id)}
+      },
+      {
         $lookup: {
           from: "lectures",
           localField: "course_id",
           foreignField: "courseId",
-          as: "course",
+          as: "course"
         },
       },
       { $unwind: "$course" },
       {
         $project: {
+          student_id: 1,
           course_id: 1,
           courseName: "$course.courseName",
           semester: "$course.semester",
