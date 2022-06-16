@@ -1,0 +1,162 @@
+[
+    {
+        "student_id": 2017000002,
+        "course_id": 21,
+        "grade": 3,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 0.9927
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 22,
+        "grade": 4,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 1.283
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 23,
+        "grade": 3,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 1.3914
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 24,
+        "grade": 3,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 0.9925
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 25,
+        "grade": 3,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 1.4929
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 26,
+        "grade": 3,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 0.993
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 27,
+        "grade": 3,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 4.9589
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 28,
+        "grade": 3,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 3.6757
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 29,
+        "grade": 4,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 3.7708
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 30,
+        "grade": 3,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 3.7676
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 31,
+        "grade": 1,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 3.7746
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 32,
+        "grade": 3,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 3.471
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 33,
+        "grade": 3,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 3.8664
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 34,
+        "grade": 3,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 3.8703
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 35,
+        "grade": 3,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 3.6722
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 36,
+        "grade": 3,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 3.8692
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 37,
+        "grade": 1,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 3.6774
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 38,
+        "grade": 3,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 3.9642
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 39,
+        "grade": 4,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 3.8681
+    },
+    {
+        "student_id": 2017000002,
+        "course_id": 40,
+        "grade": 3,
+        "major": "software",
+        "keywords": "security",
+        "ratings": 4.9587
+    }
+]

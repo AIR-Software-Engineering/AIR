@@ -34,7 +34,7 @@
         추천 목록
       </div>
       <div class="container">
-        <button @click="func" class="item font" style="font-size:20px; border:none">
+        <button @click="getRecommendLectureList" class="item font" style="font-size:20px; border:none">
           <div>
             이수체계도 1
               <div class="starContainer">
@@ -51,7 +51,7 @@
             <img src="../../assets/first.png" style="width:60px; height:60px;">
           </div>
         </button>
-        <button @click="func" class="item font" style="font-size:20px; border:none">
+        <button @click="getRecommendLectureList" class="item font" style="font-size:20px; border:none">
           <div>
             이수체계도 2
               <div class="starContainer">
@@ -82,10 +82,28 @@ export default {
   components: {
     LeftSideBar,
   },
+  mounted() {
+    this.$axios.get('/api/RCLecture_semester?count=5&student_id=2017000001')
+    .then((response) => {
+      console.log(response.data); // 비동기 통신이 성공했을 경우, .then()은 콜백을 인자로 받아 결과값을 처리함
+    })
+    .catch((error) => {
+      console.log(error); // catch()를 통해 오류를 처리함
+    });
+  },
   methods: {
     func :function(){
       alert("hi");
-    }
+    },
+    getRecommendLectureList: function() {
+      this.$axios.get('/api/RCLecture_semester?count=5&student_id=2017000001')
+      .then((response) => {
+        console.log(response.data); // 비동기 통신이 성공했을 경우, .then()은 콜백을 인자로 받아 결과값을 처리함
+      })
+      .catch((error) => {
+        console.log(error); // catch()를 통해 오류를 처리함
+      });
+    },
   }
 }
 </script>

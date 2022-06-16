@@ -148,7 +148,7 @@ export default {
     LeftSideBar,
   },
   mounted() {
-      this.$axios.get('/api/RCLecture?str=name&count=10')
+      this.$axios.get('/api/RCLecture?student_id=2017000001&count=5')
       .then((response) => {
         console.log(response.data); // 비동기 통신이 성공했을 경우, .then()은 콜백을 인자로 받아 결과값을 처리함
       })
