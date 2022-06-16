@@ -2,7 +2,6 @@
   <div class="fade2s">
     <LeftSideBar/>
     <div style="margin-left:1000px">
-      hello
     </div>
     <div class="right font" style="margin-top:50px; font-size:30px">
       이수체계도
