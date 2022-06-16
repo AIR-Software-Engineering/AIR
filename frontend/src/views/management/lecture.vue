@@ -30,7 +30,7 @@
                             </div>
                         </div>
                         <div v-show="this.toggle != false">
-                            <div style="width:70%;" v-for="(row,index) in rows" :key="row.id">
+                            <div style="width:70%;" v-for="(row,index) in obj" :key="row.id">
                                 <div style="float:left; width:40%;margin-right:10%;margin-bottom:40px;">
                                     <div class="lecturebox">
                                         <div class="lechild1">
@@ -49,26 +49,26 @@
                                     </div>
 
                                 </div>
-                            </div> 
+                            </div>
                         </div>
                         <div v-show="this.toggle != true">
                             <div class="parent" style="width:70%;">
                                 <div class="child1">
-                                    <div v-for="(row,key,index) in rows" :key="index">
+                                    <div v-for="(row,key,index) in obj" :key="index">
                                         <div class="parent" style="float:left; width:80%;margin-right:10%;margin-bottom:40px;">
                                             <div class="child3">
                                                 <div class="lecturebox">
                                                     <div class="lechild1">
                                                         <div style="margin:7%;">
-                                                            <span>{{ row.name }}</span>
+                                                            <span>{{ row["courseName"] }}</span>
                                                         </div>
                                                         <div>
-                                                            <span>{{ row.recommand }}</span>
+                                                            <span>{{ row["ratings"] }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="lechild2">
                                                         <div style="margin-top:10%;">
-                                                            <span>{{ row.image }}</span>
+                                                            <span>이미지를 넣어주세요</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -113,6 +113,7 @@ export default {
             checked:[
 
             ],
+            obj:[],
             rows:[
                 {name : "CSE0000",
                 recommand: 5,
@@ -138,19 +139,30 @@ export default {
                 {name : "CSE0007",
                 recommand: 5,
                 image: "이미지를 넣어주세요"}
-                
+
             ],
             toggle:false,
       }
-      
-  }, 
+
+  },
   components : {
     LeftSideBar,
   },
   mounted() {
-      this.$axios.get('/api/RCLecture?student_id=2017000001&count=5')
-      .then((response) => {
-        console.log(response.data); // 비동기 통신이 성공했을 경우, .then()은 콜백을 인자로 받아 결과값을 처리함
+    this.$axios.get('/api/RCLecture_semester?count=5&student_id=2017000001')
+    .then((response) => {
+      console.log(response.data); // 비동기 통신이 성공했을 경우, .then()은 콜백을 인자로 받아 결과값을 처리함
+
+      for(var i = 0; i < response.data["data"].length; i++){
+        console.log(response.data["data"][i]["courseName"]);
+        var sub = {};
+        sub["courseName"] = response.data["data"][i]["courseName"];
+        sub["ratings"] = response.data["data"][i]["ratings"];
+        console.log(sub);
+        this.obj.push(sub);
+        sub = {};
+      }
+      console.log(this.obj[0]);
       })
       .catch((error) => {
         console.log(error); // catch()를 통해 오류를 처리함
