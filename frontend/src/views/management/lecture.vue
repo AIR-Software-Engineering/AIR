@@ -128,13 +128,13 @@
                     </div>
                   </div>
                   <div v-show="this.bg === 1">
-                    <div id="ttable" style="width:70%;" class="test"></div>
+                    <div id="ttable" style="width:70%;" class="test fade1s"></div>
                   </div>
                   <div v-show="this.bg === 2">
-                    <div id="ttable" style="width:70%;" class="test2"></div>
+                    <div id="ttable" style="width:70%;" class="test2 fade1s"></div>
                   </div>
                   <div v-show="this.bg === 3">
-                    <div id="ttable" style="width:70%;" class="test3"></div>
+                    <div id="ttable" style="width:70%;" class="test3 fade1s"></div>
                   </div>
                 </div>
               </div>
@@ -200,7 +200,7 @@ export default {
       this.toggle = !this.toggle;
     },
     timetable: function() {
-      this.bg = 2;
+      this.bg = 1;
     },
     timetable2: function() {
       this.bg += 1;
@@ -283,5 +283,25 @@ export default {
   background-size: contain;
   background-repeat: no-repeat;
   border: 0;
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+.fade1s{
+  animation: fadein 5s;
+  -webkit-animation-delay: fadein 5s;
 }
 </style>
